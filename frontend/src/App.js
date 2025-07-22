@@ -7,6 +7,7 @@ import {
 import './App.css';
 import Header from './components/Header';
 import NotesListPage from './pages/NotesListPage';
+import NotePage from './pages/NotePage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Header />
         <Routes> {/* Route'ları artık Routes içine alıyoruz */}
           <Route path="/" element={<NotesListPage />} />
+          <Route path="note/:id" element={<NotesListPage />} />
         </Routes>
       </div>
     </Router>
