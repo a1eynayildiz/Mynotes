@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Routes> {/* Route'ları artık Routes içine alıyoruz */}
           <Route path="/" element={<NotesListPage />} />
-          <Route path="note/:id" element={<NotesListPage />} />
+          <Route path="/note/:id" element={<NotePage />} />
         </Routes>
       </div>
     </Router>
