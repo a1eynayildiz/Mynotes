@@ -1,24 +1,26 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 const NotePage = () => {
   const { id } = useParams()
-  const [note, setNote] = useState(null) 
+  const [note, setNote] = useState(null)
 
-  useEffect(()=> {
-    
-  }
-  )
+  useEffect(() => {
+    const getNote = async () => {
+      const response = await fetch(`/api/notes/${id}/`)
+      if (response.ok) {
+        const data = await response.json()
+        setNote(data)
+      }
+    }
 
-  const getNote = async () => {
-    let response = await fetch(`/api/notes/${id}/`)  // proxy sayesinde http://127.0.0.1:8000 yazmama artık gerek yok
-    let data = await response.json()
-    setNote(data)
-  }
+    getNote()
+  }, [id])
 
   return (
     <div>
-        <h1>Single Note {id}</h1>
+      <h1>Note #{id}</h1>
+      <p>{note?.body}</p> {/* note varsa gösterir, yoksa boş kalır */}
     </div>
   )
 }
