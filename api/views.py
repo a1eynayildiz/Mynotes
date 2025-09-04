@@ -42,7 +42,7 @@ def getRoutes(request):
     return Response(routes)#basit bir tanıtım endpointi yazdık.Tarayıcıdan bu viewe gidildiğinde 'OUR API' yazan bir JSON cevabı döner.
 @api_view(['GET'])
 def getNotes(request):
-    notes = Note.objects.all()
+    notes = Note.objects.all().order_by('-updated')
     serializer = NoteSerializer(notes, many=True)
     return Response(serializer.data)
 
